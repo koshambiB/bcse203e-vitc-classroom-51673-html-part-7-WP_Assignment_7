@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <input type="text" id="textInput" placeholder="Enter text" oninput="checkPalindrome()">
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            const text = document.getElementById('textInput').value;
+            const cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const reversed = cleanText.split('').reverse().join('');
+            const result = document.getElementById('result');
+
+            if (text === '') {
+                result.textContent = '';
+                return;
+            }
+
+            if (cleanText === reversed) {
+                result.textContent = `"${text}" is a palindrome!`;
+                result.className = 'valid';
+            } else {
+                result.textContent = `"${text}" is not a palindrome.`;
+                result.className = 'invalid';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Duplicates in Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Find Duplicates in Array</h1>
+        <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g., 1,2,3,2,4,3,5)">
+        <div>
+            <button onclick="findDuplicates()">Find Duplicates</button>
+            <button onclick="removeDuplicates()">Remove Duplicates</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function findDuplicates() {
+            const input = document.getElementById('arrayInput').value;
+            const array = input.split(',').map(num => num.trim());
+            const duplicates = array.filter((item, index) => array.indexOf(item) !== index);
+
+            const result = document.getElementById('result');
+            if (duplicates.length > 0) {
+                result.innerHTML = `<strong>Duplicate values:</strong><br>${[...new Set(duplicates)].join(', ')}`;
+            } else {
+                result.innerHTML = 'No duplicates found!';
+            }
+        }
+
+        function removeDuplicates() {
+            const input = document.getElementById('arrayInput').value;
+            const array = input.split(',').map(num => num.trim());
+            const unique = [...new Set(array)];
+
+            const result = document.getElementById('result');
+            result.innerHTML = `<strong>Array with duplicates removed:</strong><br>${unique.join(', ')}`;
+        }
+    </script>
+</body>
+
+</html>

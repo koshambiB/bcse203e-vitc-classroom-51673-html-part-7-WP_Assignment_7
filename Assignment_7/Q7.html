@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Largest Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Second Largest Number</h1>
+        <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas (e.g., 1,2,3,4,5)">
+        <br>
+        <button onclick="findSecondLargest()">Find Second Largest</button>
+        <button onclick="findThirdLargest()">Find Third Largest</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function findSecondLargest() {
+            const input = document.getElementById('arrayInput').value;
+            const array = input.split(',').map(num => parseFloat(num.trim()));
+            if (array.length < 2) {
+                document.getElementById('result').textContent = 'Please enter at least two numbers.';
+                return;
+            }
+            const uniqueArray = [...new Set(array)].sort((a, b) => b - a);
+            const secondLargest = uniqueArray[1];
+            document.getElementById('result').textContent = `The second largest number is: ${secondLargest}`;
+        }
+
+        function findThirdLargest() {
+            const input = document.getElementById('arrayInput').value;
+            const array = input.split(',').map(num => parseFloat(num.trim()));
+            if (array.length < 3) {
+                document.getElementById('result').textContent = 'Please enter at least three numbers.';
+                return;
+            }
+            const uniqueArray = [...new Set(array)].sort((a, b) => b - a);
+            const thirdLargest = uniqueArray[2];
+            document.getElementById('result').textContent = `The third largest number is: ${thirdLargest}`;
+        }
+    </script>
+</body>
+
+</html>

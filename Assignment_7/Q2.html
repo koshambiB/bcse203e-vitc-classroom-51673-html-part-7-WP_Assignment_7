@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .result {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>FizzBuzz Challenge</h1>
+        <div>
+            <input type="number" id="fizzNum" placeholder="Fizz number (default: 3)">
+            <input type="number" id="buzzNum" placeholder="Buzz number (default: 5)">
+            <button onclick="runFizzBuzz()">Run FizzBuzz</button>
+        </div>
+        <div class="result" id="output"></div>
+    </div>
+
+    <script>
+        function runFizzBuzz() {
+            const fizzNum = parseInt(document.getElementById('fizzNum').value) || 3;
+            const buzzNum = parseInt(document.getElementById('buzzNum').value) || 5;
+            let output = '';
+
+            for (let i = 1; i <= 50; i++) {
+                if (i % fizzNum === 0 && i % buzzNum === 0) {
+                    output += 'FizzBuzz ';
+                } else if (i % fizzNum === 0) {
+                    output += 'Fizz ';
+                } else if (i % buzzNum === 0) {
+                    output += 'Buzz ';
+                } else {
+                    output += i + ' ';
+                }
+            }
+
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+</body>
+
+</html>
